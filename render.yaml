@@ -1,22 +1,22 @@
 databases:
  - name: budget
-   databaseName: budget_be6i
-   user: budget_be6i_user
+   databaseName: budget_be6i_bvt6
+   user: budget_be6i_bvt6_user
    plan: free
 
 
 
 services:
  - type: web
-   name: budget
+   name: budgetF
    env: ruby
    plan: free
    buildCommand: "./bin/render-build.sh"
-   startCommand: bundle exec rails s
+    startCommand: "bundle exec puma -C config/puma.rb"
    envVars:
      - key: DATABASE_URL
        fromDatabase:
-         name: budget
+         name: budget_be6i_bvt6
          property: connectionString
      - key: RAILS_MASTER_KEY
        sync: false
